@@ -1,0 +1,35 @@
+Pseudocódigo del algoritmo DFS
+
+
+ALGORITMO DFS(Grafo, NodoInicial)
+
+    Crear conjunto Visitados
+    Crear lista Pila
+    Crear lista OrdenVisita
+
+    Insertar NodoInicial en Pila
+
+    MIENTRAS Pila no esté vacía HACER
+
+        Nodo ← sacar último elemento de Pila
+
+        SI Nodo no está en Visitados ENTONCES
+
+            Agregar Nodo a Visitados
+            Agregar Nodo a OrdenVisita
+
+            PARA cada Vecino en inverso(Grafo[Nodo]) HACER
+
+                SI Vecino no está en Visitados ENTONCES
+                    Insertar Vecino en Pila
+                FIN SI
+
+            FIN PARA
+
+        FIN SI
+
+    FIN MIENTRAS
+
+    REGRESAR OrdenVisita
+
+FIN ALGORITMO

@@ -1,0 +1,101 @@
+Pseudocódigo (Basado en Descenso de Gradiente - Hinge Loss)
+Aunque las SVM suelen resolverse con programación cuadrática, para
+entender su implementación en código usamos la pérdida de "bisagra"
+(Hinge Loss).
+Algoritmo: SVM (Hard Margin / Linear)
+Entrada: X, y (etiquetas -1 o 1), alpha, lambda (regularización)
+Salida: w, b
+1. Inicializar w en ceros w=0, b = 0
+2. Para cada iteración/época:
+Para cada ejemplo xi
+:
+Si yi * (w * xi
+
+- b) >= 1:
+
+# El punto está fuera del margen,solo aplicamos regularización
+dw = 2 * lambda * w
+db = 0
+Sino:
+# El punto es un vector de soporte o está mal clasificado
+dw = 2 * lambda * w - (xi * yi
+)
+
+db = yi
+Actualizar pesos y sesgo: w = w - alpha * dw, b = b - alpha * db
+
+
+1. ¿Cómo define, de acuerdo al tema visto en clase, el Aprendizaje Automático en comparación con la programación tradicional?
+a. Posible respuesta: En la programación tradicional se programan reglas explícitas; en el Aprendizaje Automático se programa un
+algoritmo para que aprenda esas reglas a partir de los datos.
+
+2. Explica la diferencia entre el paradigma conexionista y el simbólico en términos de representación.
+a. Posible respuesta: El simbólico es transparente y explicable basado en reglas lógicas; el conexionista es a menudo una "caja negra"
+difícil de descifrar.
+
+3. ¿Por qué se dice que el aprendizaje automático es mejor para tareas de percepción sensorial?
+a. Posible respuesta: Porque estas tareas (ver, oír) son realizadas por los humanos de forma inconsciente y son difíciles de codificar en
+reglas manuales, pero fáciles de aprender con suficientes ejemplos.
+4. Explica el concepto de "Generalización" en IA mediante la analogía del examen.
+a. Posible respuesta: Aprender no es memorizar; la generalización es la capacidad de responder preguntas nuevas. Si un alumno solo
+memoriza respuestas pasadas, no ha aprendido realmente.
+5. ¿Qué diferencia al aprendizaje supervisado del no supervisado?
+a. Posible respuesta: El supervisado tiene etiquetas (respuestas conocidas) para guiar el aprendizaje; el no supervisado busca
+patrones en datos sin etiquetas previas.
+
+6. Describe el ciclo de interacción en el Aprendizaje por Refuerzo.
+a. Posible respuesta: Un agente observa un estado, toma una acción, recibe una recompensa (positiva o negativa) y pasa a un nuevo
+estado, buscando maximizar la recompensa a largo plazo.
+
+7. ¿Por qué es importante la aleatoriedad al obtener instancias para el conjunto de test?
+a. Posible respuesta: Para asegurarse de que no existen diferencias sistemáticas entre el grupo de entrenamiento y el de prueba,
+garantizando una evaluación justa.
+8. ¿Qué es un "fold" en la técnica de validación cruzada?
+a. Posible respuesta: Es una partición separada de los datos históricos (usualmente un 10% si k=10) utilizada para evaluar el modelo
+entrenado con el resto de las particiones.
+
+9. Describe cada una de las métricas vistas en clase con sus formulas.
+
+Posible respuesta:
+a. 1. Métricas para Clasificación (Basadas en la Matriz de Confusión)
+• Exactitud (Accuracy): Es el porcentaje total de predicciones correctas (tanto positivos como negativos) entre todos los
+casos. Se usa cuando las clases están equilibradas.
+• Precisión (Precision): Mide la calidad de las predicciones positivas. Responde a: "De todos los casos que el modelo
+marcó como positivos, ¿cuántos lo eran realmente?". Es crucial cuando el costo de un falso positivo es alto.
+• Exhaustividad / Sensibilidad (Recall): Mide la capacidad del modelo para encontrar todos los casos positivos.
+Responde a: "De todos los casos que realmente eran positivos, ¿cuántos logró detectar el modelo?". Es vital en
+diagnósticos médicos.
+• F1-Score: Es la media armónica entre la Precisión y el Recall. Proporciona un balance entre ambas, siendo muy útil
+cuando existe un desequilibrio entre las clases.
+b. 2. Métricas para Regresión (Basadas en el Error)
+• Error Cuadrático Medio (MSE): Calcula el promedio de los cuadrados de los errores (diferencia entre valor real y
+predicho). Al elevar al cuadrado, penaliza más los errores grandes.
+• Raíz del Error Cuadrático Medio (RMSE): Es la raíz cuadrada del MSE. Su ventaja es que devuelve el error a las mismas
+unidades que la variable original, facilitando su interpretación.
+• Error Absoluto Medio (MAE): Promedio de las diferencias absolutas entre lo real y lo predicho. Es más robusto ante
+valores atípicos (outliers) que el MSE.
+• Coeficiente de Determinación (R^2): Indica qué porcentaje de la variación de los datos es explicado por el modelo. Va
+de 0 a 1, donde 1 es un ajuste perfecto.
+10. ¿Cómo decide k-NN la etiqueta de un nuevo punto?
+a. Posible respuesta: Calcula la distancia a todos los puntos, selecciona los k más cercanos, cuenta la frecuencia de sus etiquetas y
+asigna la del voto mayoritario.
+
+11. Explica de manera sencilla qué hace un Kernel Lineal vs un Kernel Polinomial.
+a. Posible respuesta: El lineal busca una línea recta (o hiperplano plano) para separar los datos; el polinomial permite crear curvas
+más complejas para adaptarse a datos que no siguen una línea recta.
+
+12. ¿Cuál es la principal desventaja de las SVM cuando se trabaja con datasets extremadamente grandes?
+a. Posible respuesta: Su tiempo de entrenamiento y uso de memoria aumentan drásticamente (complejidad cuadrática), lo que las
+hace menos eficientes que otros algoritmos ante millones de registros.
+
+13. ¿Cuál es la diferencia entre un nodo raíz, un nodo interno y una hoja en un árbol de decisión?
+a. Posible respuesta: El raíz tiene el conjunto inicial; los internos evalúan atributos para dividir datos; las hojas emiten el resultado o
+decisión final.
+
+14. ¿Cómo funciona el aprendizaje en una red neuronal mediante el ajuste de pesos?
+a. Posible respuesta: La red predice, compara con la respuesta correcta y ajusta sus pesos para corregir el error y mejorar la precisión
+futura.
+
+15. ¿Qué problema resuelven los Transformers en comparación con las redes recurrentes tradicionales?
+a. Posible respuesta: Resuelven la "memoria a corto plazo" y la lentitud del procesamiento secuencial, permitiendo entender
+relaciones entre palabras lejanas al procesar todo el texto simultáneamente.
